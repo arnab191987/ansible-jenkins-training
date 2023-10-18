@@ -1,0 +1,11 @@
+---
+-  name: Install the package with loop
+   hosts: linux
+   tasks:
+     - name: Install packages
+       ansible.builtin.yum:
+        name: "{{ item }}"
+        state: present
+       with_items:
+        - php
+        - gcc

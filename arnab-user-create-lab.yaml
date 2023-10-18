@@ -1,0 +1,19 @@
+---
+-  name: User and Group creation
+   hosts: linux
+   gather_facts: false
+   tasks:
+     - name: Ensure group "ansible-training" exists
+       ansible.builtin.group:
+         name: ansible-training
+         state: present
+
+     - name: Add the user 'name' with a specific uid and a primary group of 'ansible-training'
+       ansible.builtin.user:
+         name: name
+         group: ansible-training
+
+     - name: Add the user 'name1' with a specific uid and a primary group of 'ansible-training'
+       ansible.builtin.user:
+         name: name1
+         group: ansible-training

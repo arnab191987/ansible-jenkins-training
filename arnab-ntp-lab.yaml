@@ -1,0 +1,38 @@
+---
+- name: NTP installation
+  tasks:
+    - name: Executing NTP using block 
+      block:
+        - name: Ensure NTP is installed
+          yum:
+            name: chrony
+           #iname: ntp
+            state: present
+          ignore_errors: true
+          register: result
+        - debug:
+            var: result
+        - name: NTP Service
+          service:
+            name: chronyd
+            state: started
+          enabled: yes
+          when: result.rc == False
+          register: result
+        - debug:
+            var: result
+            verbosity: 1
+        - name: Copy CONF file
+          copy:
+            src: ntp.conf 
+            dest: /etc/ntp.conf
+          notify:
+          - restart ntpd
+      handlers:
+        - name: restart ntpd
+          service:
+            name: chronyd
+            state: restarted
+    
+
+

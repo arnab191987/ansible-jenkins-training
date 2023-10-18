@@ -1,0 +1,22 @@
+---
+- name: install NTP
+  block:
+    - name: ensure NTP installed
+      yum:
+        name: chrony
+        state: present
+        register: results
+    - name:  starting chrony demon service
+      service:
+        name: chronyd
+        state: started
+        register: result
+    - debug:
+        var: result
+        verbosity: 1
+    - name: Copy CONF file
+      copy:
+        src: ntp.conf
+        dest: /etc/ntp.conf
+      notify:
+        - restart ntpd
