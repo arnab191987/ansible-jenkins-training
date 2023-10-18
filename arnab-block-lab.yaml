@@ -22,5 +22,5 @@
             src: ntp.conf
             dest: /etc/ntp.conf
           notify:
-          - restart ntpd
+            #          - restart ntpd
 
