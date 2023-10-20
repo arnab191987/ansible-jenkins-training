@@ -1,6 +1,0 @@
----
-- name: Test playbooks
-  hosts: linux
-  tasks:
-  - import_tasks: arnab-import-block-lab.yaml
-
