@@ -1,6 +1,6 @@
 ---
 -  name: User and Group creation
-   hosts: linux
+   hosts: localhost
    gather_facts: false
    tasks:
      - name: Ensure group "ansible-training" exists
