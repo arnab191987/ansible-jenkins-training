@@ -10,7 +10,7 @@
 
      - name: Add the user 'name' with a specific uid and a primary group of 'ansible-training'
        ansible.builtin.user:
-         name: name
+         name: name1
          group: ansible-training
 
      - name: Add the user 'name1' with a specific uid and a primary group of 'ansible-training'
